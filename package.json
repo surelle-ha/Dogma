@@ -1,6 +1,6 @@
 {
     "name": "@surelle-ha/dogma",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": "surelle-ha",
     "description": "Dogma is a CLI crawler for Github Secrets.",
     "repository": {
