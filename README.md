@@ -1,71 +1,128 @@
 <div id="badges" align="center">
-	<div align="center">
-		<img src="https://raw.githubusercontent.com/gist/vininjr/d29bb07bdadb41e4b0923bc8fa748b1a/raw/88f20c9d749d756be63f22b09f3c4ac570bc5101/programming.gif" width="200"/><br><br>
-	</div>
+    <div align="center">
+        <img src="https://raw.githubusercontent.com/gist/vininjr/d29bb07bdadb41e4b0923bc8fa748b1a/raw/88f20c9d749d756be63f22b09f3c4ac570bc5101/programming.gif" width="200"/><br><br>
+    </div>
 </div>
 
-This is a personal boilerplate for developing a CLI tools.
+# DOGMA
+
+This is a personal CLI tool that enables interaction with the GitHub API for the purpose of searching `.env` files with specified keywords. You can configure a GitHub token and use the crawler to search for keys in `.env` files across public repositories.
 
 <div align="center">
 
 </div>
 
-## Quick Start for Contributors
+## Table of Contents
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Commands](#commands)
+  - [Config Command](#config-command)
+  - [Crawl Command](#crawl-command)
+- [Contributing](#contributing)
+- [License](#license)
 
-To get started, here’s what you need to know:
+## Features
+
+- **Configure GitHub Token**: Set your GitHub Personal Access Token to make authorized API requests.
+- **Search `.env` Files**: Search for `.env` files on GitHub using a keyword and optionally filter for empty or non-empty key values.
+- **Quiet Output**: Optionally disable detailed output to see every step of the search.
+- **Save Results to Log**: Save search results to a log file for future reference.
+
+## Getting Started
+
+Follow these instructions to get the tool up and running on your local machine:
+
+### Prerequisites
+
+- Node.js installed on your machine.
+- A GitHub Personal Access Token (PAT) for making API requests.
+
+### Installing Dependencies
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/surelle-ha/dogma.git
+   cd dogma
+   ```
+
+2. Install the required dependencies:
+   ```bash
+   npm install
+   ```
+
+### Set Up GitHub Token
+
+Before using the crawler, you need to configure your GitHub token:
+
+```bash
+dogma config -t <your-github-token>
+```
+
+This will save your GitHub token in the configuration file located at `~/.github_crawler_config.json`.
+
+## Commands
+
+### Config Command
+
+The `config` command allows you to configure the GitHub Personal Access Token for use in API requests.
+
+```bash
+dogma config -t <your-github-token>
+```
+
+- `-t, --token <token>`: Set your GitHub token.
+
+**Example**:
+```bash
+dogma config -t ghp_1234567890abcdefg
+```
+
+This command will save your GitHub token in the configuration file and allow you to use the crawler command.
+
+### Crawl Command
+
+The `crawl` command searches for `.env` files on GitHub repositories containing a specified keyword.
+
+```bash
+dogma crawl -k <keyword> --not-empty --quiet --log <log-file>
+```
+
+- `-k, --keyword <string>`: The keyword to search in `.env` files (default: `API_KEY`).
+- `--not-empty`: Only search for keys with non-empty values.
+- `--empty`: Search for keys with empty values (default behavior).
+- `-q, --quiet`: Disable detailed output for the search.
+- `--log <file>`: Save the search results to a log file.
+
+**Example**:
+```bash
+dogma crawl -k "API_KEY" --not-empty --quiet --log search_results.json
+```
+
+This will search for `.env` files containing the `API_KEY` keyword, filter for non-empty values, and save the results to `search_results.json`.
+
+## Contributing
+
+We welcome contributions to improve this project!
+
+### How to Contribute
+
+1. **Fork the Repository:** Fork the repository to your GitHub account.
+2. **Clone the Repository:** Clone your fork to your local machine.
+3. **Create a Feature Branch:** Create a new branch for your feature or bug fix.
+4. **Commit Your Changes:** Make changes and commit them with a descriptive message.
+5. **Push Changes:** Push your changes to your forked repository.
+6. **Create a Pull Request:** Submit a pull request to the original repository with a detailed description of your changes.
 
 ### Code of Conduct
 
-We prioritize creating a respectful and inclusive environment. Please review and adhere to our Code of Conduct to ensure a positive experience for all collaborators.
+We expect all contributors to follow our Code of Conduct. Please ensure that you contribute in a respectful and inclusive manner.
 
-### Reporting Bugs
+## License
 
-If you find a bug in the codebase:
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-1. **Check Existing Issues:** Verify if the issue has already been reported to avoid duplication.
-2. **Create a Detailed Issue:** Include a descriptive title, a clear explanation of the problem, steps to reproduce, and the expected outcome.
-
-### Feature Requests
-
-To suggest a new feature:
-
-1. **Search Existing Suggestions:** Check if someone else has already proposed something similar.
-2. **Submit a New Issue:** Clearly describe the proposed feature, its benefits, and possible implementations.
-
-## How to Contribute Code
-
-### Setting Up Your Development Environment
-
-1. **Fork the Repository:** Start by forking the project repository on GitHub.
-2. **Clone Your Fork:** Clone your forked repository to your local machine.
-3. **Install Dependencies:** Navigate to the project directory and run `npm install` to install required dependencies.
-
-### Making Changes
-
-1. **Create a New Branch:** Use a branch specific to the feature or fix you are working on.
-2. **Commit Changes:** Make your changes in the new branch. Commit messages should clearly explain the purpose of the changes.
-3. **Write Tests:** Add or update tests to cover the new functionality or fixes. Ensure all tests pass.
-
-### Pull Request Process
-
-1. **Update Your Branch:** Rebase your branch on the latest main branch to ensure a smooth integration.
-2. **Submit a Pull Request (PR):** Push your branch to GitHub and open a PR against the main branch of the original project repository.
-3. **Review Process:** The project maintainer will review your PR. Be open to making revisions based on feedback.
-4. **PR Approval and Merge:** Once approved, the maintainers will merge your PR.
-
-## Additional Resources
-
--   **Documentation:** Familiarize yourself with the project documentation to understand how to use and extend the project.
--   ~~**Community:** Join our community forums or chat channels to discuss ideas and ask questions.~~
-
-## Acknowledgments
-
-Contributors who help improve the project make a significant impact. We appreciate your dedication and effort in enhancing this project.
-
-Thank you for choosing to contribute to the project. We look forward to your contributions!
-
-<a href="https://github.com/surelle-ha/CLI-Tool-Boilerplate/graphs/contributors">
-<img src="https://contrib.rocks/image?repo=surelle-ha/CLI-Tool-Boilerplate" />
+<a href="https://github.com/surelle-ha/dogma-Boilerplate/graphs/contributors">
+<img src="https://contrib.rocks/image?repo=surelle-ha/dogma-Boilerplate" />
 </a>
 
 #
