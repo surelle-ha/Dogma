@@ -14,10 +14,10 @@ export const searchCommand = new Command("crawl")
     )
     .option("--not-empty", "Search for non-empty key values", false)
     .option("--empty", "Search for empty key values (default)", true)
-    .option("-v, --verbose", "Enable verbose output", true)
+    .option("-q, --quiet", "Disable verbose output", false)
     .option("--log <file>", "Save results to a log file")
     .action(async (options) => {
-        const { keyword, notEmpty, verbose, log } = options;
+        const { keyword, notEmpty, quiet, log } = options;
         const config = loadConfig();
         const GITHUB_TOKEN = config.token;
 
@@ -40,7 +40,7 @@ export const searchCommand = new Command("crawl")
             const query = notEmpty
                 ? `${keyword}= in:file filename:.env`
                 : `${keyword}= in:file filename:.env NOT *`;
-            if (verbose) console.log(chalk.gray(`Search query: ${query}`));
+            if (!quiet) console.log(chalk.gray(`Search query: ${query}`));
 
             const response = await axios.get(
                 "https://api.github.com/search/code",
@@ -76,7 +76,7 @@ export const searchCommand = new Command("crawl")
                     path: item.path,
                     url: item.html_url,
                 };
-                if (verbose) {
+                if (!quiet) {
                     console.log(chalk.blue(`Result ${index + 1}:`));
                     console.log(chalk.cyan(`Repository: ${result.repository}`));
                     console.log(chalk.magenta(`File Path: ${result.path}`));
