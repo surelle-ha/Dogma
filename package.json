@@ -1,10 +1,10 @@
 {
-    "name": "@surelle-ha/hero",
-    "version": "1.0.3",
+    "name": "@surelle-ha/dogma",
+    "version": "1.0.0",
     "author": "surelle-ha",
-    "description": "Hero is a boilerplate for developing CLI tools.",
+    "description": "Dogma is a CLI crawler for Github Secrets.",
     "repository": {
-        "url": "https://github.com/surelle-ha/Hero-Boilerplate.git"
+        "url": "https://github.com/surelle-ha/dogma.git"
     },
     "keywords": [
         "cli"
@@ -12,7 +12,7 @@
     "license": "ISC",
     "type": "module",
     "bin": {
-        "hero": "./dist/bin/hero.js"
+        "dogma": "./dist/bin/dogma.js"
     },
     "scripts": {
         "build": "tsc --build"

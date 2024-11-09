@@ -3,26 +3,26 @@ import figlet from "figlet";
 import chalk from "chalk";
 import wrapAnsi from "wrap-ansi";
 
-import inspire from "./commands/inspire.js";
+import { searchCommand } from "./commands/crawl.js";
+import { configCommand } from "./commands/config.js";
 
 const program = new Command();
 
 program
-    .name("hero")
+    .name("dogma")
     .description(
-        chalk.green(
-            wrapAnsi("Hero is a boilerplate for developing CLI tools.", 65)
-        )
+        chalk.green(wrapAnsi("Dogma is a CLI crawler for Github Secrets.", 65))
     )
-    .version("1.6.0");
+    .version("1.0.0");
 
-program.addCommand(inspire);
+program.addCommand(configCommand);
+program.addCommand(searchCommand);
 
 const isDefaultCommand = process.argv.length === 2;
 
 if (isDefaultCommand) {
     figlet(
-        "Hero Boilerplate",
+        "DOGMA",
         {
             font: "cybermedium",
             width: 80,
